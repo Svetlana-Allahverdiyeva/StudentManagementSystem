@@ -1,5 +1,5 @@
 from database import *
-
+from utils import *
 
 def addStudent():
     students = loadStudents()
@@ -62,12 +62,12 @@ def showAllStudents():
             return
 
         for student in students:
-            print("----------------------------")
+            printLine()   
             print(f"ID: {student['id']}")
             print(f"Name: {student['name']}")
             print(f"Age: {student['age']}")
             print(f"Major: {student['major']}")
-            print("----------------------------")
+            printLine()
 
     except Exception as e:
         print(f"An error occurred: {e}")
