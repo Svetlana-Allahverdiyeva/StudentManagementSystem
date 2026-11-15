@@ -50,3 +50,22 @@ def searchStudent():
             return
 
     print("Student not found!")
+
+def updateStudent():
+    students = loadStudents()
+
+    student_id = int(input("Enter student ID to update: "))
+
+    for student in students:
+        if student["id"] == student_id:
+
+            student["name"] = input("Enter new name: ").strip()
+            student["age"] = int(input("Enter new age: "))
+            student["major"] = input("Enter new major: ").strip()
+
+            saveStudents(students)
+
+            print("Student updated successfully!")
+            return
+
+    print("Student not found!")
