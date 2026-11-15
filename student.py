@@ -4,23 +4,55 @@ from database import *
 def addStudent():
     students = loadStudents()
 
-    student_id = int(input("Enter student ID: "))
-    name = input("Enter student name: ")
-    age = int(input("Enter student age: "))
-    major = input("Enter student major: ")
+    try:
+        student_id = int(input("Enter student ID: "))
 
-    student = {
-        "id": student_id,
-        "name": name,
-        "age": age,
-        "major": major
-    }
+        if student_id <= 0:
+            print("Error: ID must be positive!")
+            return
 
-    students.append(student)
+        for student in students:
+            if student["id"] == student_id:
+                print("Error: This ID already exists!")
+                return
 
-    saveStudents(students)
+        name = input("Enter student name: ").strip()
 
-    print("Student added successfully!")
+        if not name:
+            print("Error: Name cannot be empty!")
+            return
+
+        age = int(input("Enter student age: "))
+
+        if age <= 0:
+            print("Error: Age must be positive!")
+            return
+
+        major = input("Enter student major: ").strip()
+
+        if not major:
+            print("Error: Major cannot be empty!")
+            return
+
+        student = {
+            "id": student_id,
+            "name": name,
+            "age": age,
+            "major": major
+        }
+
+        students.append(student)
+
+        saveStudents(students)
+
+        print("Student added successfully!")
+
+    except ValueError:
+        print("Error: ID and age must be numbers!")
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
 
 def showAllStudents():
     students = loadStudents()
@@ -66,6 +98,22 @@ def updateStudent():
             saveStudents(students)
 
             print("Student updated successfully!")
+            return
+
+    print("Student not found!")
+
+def removeStudent():
+    students = loadStudents()
+
+    student_id = int(input("Enter student ID to delete: "))
+
+    for student in students:
+        if student["id"] == student_id:
+            students.remove(student)
+
+            saveStudents(students)
+
+            print("Student deleted successfully!")
             return
 
     print("Student not found!")

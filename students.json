@@ -1,8 +1,14 @@
 [
     {
-        "id": 1,
-        "name": "E",
-        "age": 2,
-        "major": "m"
+        "id": 101,
+        "name": "Aysel",
+        "age": 20,
+        "major": "Informatics"
+    },
+    {
+        "id": 102,
+        "name": "Ali",
+        "age": 22,
+        "major": "Programming"
     }
 ]
