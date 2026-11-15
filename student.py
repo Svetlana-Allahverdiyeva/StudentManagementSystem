@@ -21,3 +21,16 @@ def addStudent():
     saveStudents(students)
 
     print("Student added successfully!")
+
+def showAllStudents():
+    students = loadStudents()
+
+    if not students:
+        print("No students found!")
+        return
+
+    for student in students:
+        print(f"ID: {student['id']}")
+        print(f"Name: {student['name']}")
+        print(f"Age: {student['age']}")
+        print(f"Major: {student['major']}")
